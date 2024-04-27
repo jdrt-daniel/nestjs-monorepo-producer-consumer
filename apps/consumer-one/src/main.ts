@@ -9,10 +9,11 @@ async function bootstrap() {
       transport: Transport.RMQ,
       options: {
         urls: [`amqp://${process.env.RMQ_HOST}:${process.env.RMQ_PORT}`],
-        queue: 'cats_queue',
+        queue: process.env.RMQ_QUEUE_PERSON,
         queueOptions: {
           durable: false,
         },
+        noAck: false,
       },
     },
   );
