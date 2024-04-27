@@ -12,12 +12,14 @@ export class ConsumerTwoController {
   constructor(private readonly consumerTwoService: ConsumerTwoService) {}
 
   @MessagePattern({ cmd: 'save_cat' })
-  getHello(@Payload() data, @Ctx() context: RmqContext) {
+  processMessage(@Payload() data, @Ctx() context: RmqContext) {
     const channel = context.getChannelRef();
     const originalMsg = context.getMessage();
-    console.log(data);
+
+    const res = this.consumerTwoService.receivedMessage(data);
+    console.log(res);
 
     channel.ack(originalMsg);
-    console.log('mensaje recibido');
+    console.log('Message deleted from queue');
   }
 }
