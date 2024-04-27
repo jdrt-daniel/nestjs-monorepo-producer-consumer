@@ -1,8 +1,59 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/nestjs-monorepo-producer-consumer/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/nestjs-monorepo-producer-consumer/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/nestjs-monorepo-producer-consumer",
+  "projects": {
+    "nestjs-monorepo-producer-consumer": {
+      "type": "application",
+      "root": "apps/nestjs-monorepo-producer-consumer",
+      "entryFile": "main",
+      "sourceRoot": "apps/nestjs-monorepo-producer-consumer/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/nestjs-monorepo-producer-consumer/tsconfig.app.json"
+      }
+    },
+    "comsumer-one": {
+      "type": "application",
+      "root": "apps/comsumer-one",
+      "entryFile": "main",
+      "sourceRoot": "apps/comsumer-one/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/comsumer-one/tsconfig.app.json"
+      }
+    },
+    "comsumer-two": {
+      "type": "application",
+      "root": "apps/comsumer-two",
+      "entryFile": "main",
+      "sourceRoot": "apps/comsumer-two/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/comsumer-two/tsconfig.app.json"
+      }
+    },
+    "consumer-one": {
+      "type": "application",
+      "root": "apps/consumer-one",
+      "entryFile": "main",
+      "sourceRoot": "apps/consumer-one/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/consumer-one/tsconfig.app.json"
+      }
+    },
+    "consumer-two": {
+      "type": "application",
+      "root": "apps/consumer-two",
+      "entryFile": "main",
+      "sourceRoot": "apps/consumer-two/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/consumer-two/tsconfig.app.json"
+      }
+    }
   }
 }
